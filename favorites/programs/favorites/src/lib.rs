@@ -1,3 +1,4 @@
+#![allow(unexpected_cfgs)]
 use anchor_lang::prelude::*;
 
 declare_id!("5bRxjeCPi2zhwvMFCxHh8x59jwMi4vym2pTEcREUGhiE");
@@ -21,12 +22,18 @@ pub mod favorites {
         ctx.accounts.favorites.set_inner(
             Favorites { number, color, hobbies },
         );
+        msg!(
+            "Favorites: {:?}",
+            ctx.accounts.favorites,
+        );
         Ok(())
     }
+
 }
 
 #[account]
 #[derive(InitSpace)]
+#[derive(Debug)]
 pub struct Favorites {
     pub number: u64,
 

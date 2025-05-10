@@ -5,7 +5,10 @@ import { airdropIfRequired } from "./helper";
 describe("favorites", () => {
   // Configure the client to use the local cluster.
   anchor.setProvider(anchor.AnchorProvider.env());
-
+  console.log(
+    "Using provider: ",
+    anchor.AnchorProvider.env().connection.rpcEndpoint
+  );
   it("Writes our favorites to the blockchain!", async () => {
     // Add your test here.
     const user = anchor.web3.Keypair.generate();
